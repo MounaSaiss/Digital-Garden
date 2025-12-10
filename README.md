@@ -19,13 +19,6 @@ Each garden contains visual **themes** (e.g., Productivity, Travel, Ideas), and 
 - **Backend:** Node.js / Spring Boot / Django  
 - **Database:** MySQL / PostgreSQL / MongoDB  
 
-*(Adjust based on your real stack)*
 
 ---
 
-## 📦 Installation
-```bash
-git clone <repository-url>
-cd digital-garden
-npm install
-npm start
