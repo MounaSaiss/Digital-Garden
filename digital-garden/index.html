@@ -7,30 +7,57 @@
     <title>Digital Garden</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="/public/fichier.css">
+    <script src="https://kit.fontawesome.com/a680a19743.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section class="bg-[#1F4E3A] min-h-screen flex items-center">
-        <div class="container mx-auto px-6 lg:px-20 flex flex-col-reverse lg:flex-row items-center gap-12">
-            <div class="text-center lg:text-left lg:w-1/2">
+    <nav class="bg-[#173B2D] text-white">
+        <div class="container mx-auto px-6 lg:px-20">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-xl font-semibold">
+                    Digital <span class="text-[#98CA43]">Garden</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-sm">
+                    <a href="#" class="text-white/80 hover:text-[#98CA43] transition">Accueil</a>
+                    <a href="#" class="text-white/80 hover:text-[#98CA43] transition">À propos</a>
+                    <a href="#" class="text-white/80 hover:text-[#98CA43] transition">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="login.html" class="text-white/80 hover:text-white transition">
+                        Se connecter
+                    </a>
+                    <a href="inscrit.html"
+                        class="px-4 py-2 rounded-full bg-[#98CA43] text-black font-semibold hover:bg-[#86b53c] transition">
+                        S’inscrire
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white text-2xl">☰</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-6 lg:px-20">
+            <div class="max-w-2xl mx-auto text-center lg:text-left">
                 <h1 class="text-5xl font-bold text-white mb-6">
                     Créez votre <span class="text-[#98CA43]">Digital Garden</span>
                 </h1>
                 <p class="text-lg text-white/80 mb-8">
-                    Organisez vos idées et notes dans votre jardin numérique personnel. Donnez vie à vos thèmes et vos
-                    notes.
+                    Organisez vos idées et notes dans votre jardin numérique personnel.
+                    Donnez vie à vos thèmes et vos notes.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                    <a href="signup.php"
+                    <a href="inscrit.html"
                         class="px-6 py-3 rounded-full bg-[#98CA43] text-black font-semibold hover:bg-[#86b53c] transition">
                         S’inscrire
                     </a>
-                    <a href="login.php"
+                    <a href="login.html"
                         class="px-6 py-3 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition">
                         Se connecter
                     </a>
                 </div>
-                <div class="mt-10 flex gap-6 justify-center lg:justify-start">
+                <div class="mt-10 flex gap-8 justify-center lg:justify-start">
                     <div class="text-white">
                         <p class="text-3xl font-bold">76,2K+</p>
                         <p class="text-sm text-white/70">Plantes créées</p>
@@ -41,13 +68,38 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:w-1/2 flex justify-center lg:justify-end">
-                <img src="https://images.unsplash.com/photo-1563714193017-5a5fb60bc02b?auto=format&fit=crop&w=800&q=80"
-                    alt="Plante Digital Garden"
-                    class="rounded-xl shadow-2xl w-full max-w-md h-auto lg:h-full object-cover">
-            </div>
         </div>
     </section>
+    <footer class="bg-[#173B2D] text-white">
+        <div class="container mx-auto px-6 lg:px-20 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-center md:text-left">
+                    <h2 class="text-xl font-semibold">
+                        Digital <span class="text-[#98CA43]">Garden</span>
+                    </h2>
+                    <p class="text-sm text-white/70 mt-1">
+                        Cultivez vos idées, simplement.
+                    </p>
+                    <div class="mt-5">
+                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">Accueil</a>
+                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">À propos</a>
+                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-4 text-center text-xs text-white/60">
+                © 2025 Digital Garden. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
     <script src="/public/app.js"></script>
 </body>
+
 </html>
