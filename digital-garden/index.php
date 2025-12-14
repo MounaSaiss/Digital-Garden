@@ -1,5 +1,5 @@
-<?php require_once __DIR__ . '/includes/navbar.php'; ?>
-
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
     <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
         <div class="container mx-auto px-6 lg:px-20">
@@ -12,11 +12,11 @@
                     Donnez vie à vos thèmes et vos notes.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                    <a href="inscrit.html"
+                    <a href="inscrit.php"
                         class="px-6 py-3 rounded-full bg-[#98CA43] text-black font-semibold hover:bg-[#86b53c] transition">
                         S’inscrire
                     </a>
-                    <a href="login.html"
+                    <a href="login.php"
                         class="px-6 py-3 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition">
                         Se connecter
                     </a>
@@ -34,7 +34,10 @@
             </div>
         </div>
     </section>
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+
+<?php include __DIR__ . '/../includes/footer.php'; ?>
+
+
 
 
 

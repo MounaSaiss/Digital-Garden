@@ -1,5 +1,5 @@
-<?php require_once __DIR__ . '/includes/header.php'; ?>
-<?php require_once __DIR__ . '/includes/navbar.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
     <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
         <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md ">
@@ -33,4 +33,4 @@
         </div>
     </section>
 
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
