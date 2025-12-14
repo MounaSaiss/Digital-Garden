@@ -1,5 +1,6 @@
-<?php include 'header.php'; ?>
-<?php include 'navbar.php'; ?>
+<?php require_once __DIR__ . '/includes/header.php'; ?>
+<?php require_once __DIR__ . '/includes/navbar.php'; ?>
+
 
     <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
         <div class="container mx-auto px-6 lg:px-20">
@@ -34,7 +35,8 @@
             </div>
         </div>
     </section>
-<?php include 'footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
+
 
 
 
