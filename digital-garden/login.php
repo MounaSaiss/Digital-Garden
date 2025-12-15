@@ -22,7 +22,7 @@
                 </button>
             </form>
             <p class="text-sm text-center mt-4 text-gray-500">
-                Pas encore de compte ? <a href="inscrit.html" class="text-[#98CA43] hover:underline">S’inscrire</a>
+                Pas encore de compte ? <a href="inscrit.php" class="text-[#98CA43] hover:underline">S’inscrire</a>
             </p>
         </div>
     </section>

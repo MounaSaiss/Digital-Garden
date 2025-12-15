@@ -28,7 +28,7 @@
                 </button>
             </form>
             <p class="text-sm text-center mt-4 text-gray-500">
-                Déjà un compte ? <a href="login.html" class="text-[#98CA43] hover:underline">Se connecter</a>
+                Déjà un compte ? <a href="login.php" class="text-[#98CA43] hover:underline">Se connecter</a>
             </p>
         </div>
     </section>
