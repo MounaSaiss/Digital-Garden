@@ -1,43 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Garden</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="/public/fichier.css">
-    <script src="https://kit.fontawesome.com/a680a19743.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <nav class="bg-[#173B2D] text-white">
-        <div class="container mx-auto px-6 lg:px-20">
-            <div class="flex items-center justify-between h-16">
-                <div class="text-xl font-semibold">
-                    Digital <span class="text-[#98CA43]">Garden</span>
-                </div>
-                <div class="hidden md:flex items-center gap-8 text-sm">
-                    <a href="index.php" class="text-white/80 hover:text-[#98CA43] transition">Accueil</a>
-                    <a href="#" class="text-white/80 hover:text-[#98CA43] transition">À propos</a>
-                    <a href="#" class="text-white/80 hover:text-[#98CA43] transition">Contact</a>
-                </div>
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="login.php" class="text-white/80 hover:text-white transition">
-                        Se connecter
-                    </a>
-                    <a href="inscrit.php"
-                        class="px-4 py-2 rounded-full bg-[#98CA43] text-black font-semibold hover:bg-[#86b53c] transition">
-                        S’inscrire
-                    </a>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-white text-2xl">☰</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
-    <section class="p-8 bg-[#1F4E3A]  min-h-screen">
-    
+<section class="p-8 bg-[#1F4E3A]  min-h-screen">
     <div class="bg-white p-4 rounded mb-8 text-white">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <select class="p-2 text-black rounded">
@@ -85,17 +49,16 @@
                 <button class="flex-1 bg-red-500 text-white py-1 rounded-lg hover:scale-105 transition-transform">Supprimer</button>
             </div>
         </div>
-
     </div>
     <div class="flex justify-center m-12 ">
         <div class="w-[800px] bg-white/90  p-6 rounded-2xl">
             <h3 class="text-2xl font-bold mb-6 text-[#173B2D] text-center">
-                Ajouter 
+                Ajouter
             </h3>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex flex-col">
                     <label class="text-[#173B2D] mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-tag"></i> Thème 
+                        <i class="fa-solid fa-tag"></i> Thème
                     </label>
                     <select class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]">
                         <option>Productivité</option>
@@ -105,7 +68,7 @@
                 </div>
                 <div class="flex flex-col">
                     <label class="text-[#173B2D] mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-heading"></i> Titre 
+                        <i class="fa-solid fa-heading"></i> Titre
                     </label>
                     <input type="text"
                         class="border border-[#98CA43] p-2 rounded-lg ">
@@ -124,7 +87,7 @@
                 </div>
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[#173B2D] mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-align-left"></i> Contenu 
+                        <i class="fa-solid fa-align-left"></i> Contenu
                     </label>
                     <textarea rows="4" placeholder="Résumé ou contenu..."
                         class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]"></textarea>
@@ -140,37 +103,4 @@
     </div>
 </section>
 
-
-    <footer class="bg-[#173B2D] text-white">
-        <div class="container mx-auto px-6 lg:px-20 py-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="text-center md:text-left">
-                    <h2 class="text-xl font-semibold">
-                        Digital <span class="text-[#98CA43]">Garden</span>
-                    </h2>
-                    <p class="text-sm text-white/70 mt-1">
-                        Cultivez vos idées, simplement.
-                    </p>
-                    <div class="mt-5">
-                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="text-2xl mb-8"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="flex gap-6 text-sm">
-                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">Accueil</a>
-                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">À propos</a>
-                    <a href="#" class="text-white/70 hover:text-[#98CA43] transition">Contact</a>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-8 pt-4 text-center text-xs text-white/60">
-                © 2025 Digital Garden. Tous droits réservés.
-            </div>
-        </div>
-    </footer>
-    <script src="/public/app.js"></script>
-</body>
-
-</html>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
