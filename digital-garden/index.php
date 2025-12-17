@@ -1,6 +1,8 @@
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
+
+
     <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
         <div class="container mx-auto px-6 lg:px-20">
             <div class="max-w-2xl mx-auto text-center lg:text-left">
