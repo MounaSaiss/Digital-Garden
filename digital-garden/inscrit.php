@@ -28,7 +28,6 @@ if (isset($_POST["Register"])) {
         $errors['password'] = 'Passwords not match';
     }
 
-
     if (count($errors) == 0) {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO users (username ,email,password)values('$username', '$email','$password')";
