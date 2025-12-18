@@ -24,3 +24,8 @@ CREATE TABLE note (
     FOREIGN KEY(id_theme) REFERENCES theme(id)
 );
 
+ALTER TABLE users
+ADD email VARCHAR(50) AFTER username;
+ALTER TABLE users
+ADD confirm_password VARCHAR(255) AFTER password ;
+
