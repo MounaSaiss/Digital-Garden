@@ -1,10 +1,19 @@
-<?php require_once __DIR__ . '/../config/database.php'; ?>
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/navbar.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    exit;
+} 
+
+require_once __DIR__ . '/../config/database.php';
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+?>
+
 
 <section class="p-8 bg-[#1F4E3A]  min-h-screen">
     <a href="formNote.php" class="flex-1 bg-green-500 text-white py-1 rounded-lg  p-2 ">
-        Add new notes 
+        Add new notes
     </a>
     <div class="bg-white p-4 rounded mb-8 text-white mt-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

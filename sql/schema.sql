@@ -33,3 +33,7 @@ ADD lastLogin TIME AFTER dateInscription;
 
 
 
+SELECT t.nom,t.badgeCouleur,COUNT(n.id) 
+AS total_notes FROM theme AS t LEFT JOIN note AS n ON n.id_theme = t.id
+WHERE t.id_user = 12
+GROUP BY t.id;

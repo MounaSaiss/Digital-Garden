@@ -1,52 +1,62 @@
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/navbar.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    exit;
+}
+
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/navbar.php';
+
+$query = "SELECT t.id,t.nom,t.badgeCouleur,COUNT(n.id) 
+AS total_notes FROM theme AS t LEFT JOIN note AS n ON n.id_theme = t.id
+WHERE t.id_user = $_SESSION[user_id]
+GROUP BY t.id;
+";
+
+
+$result = mysqli_query($conn, $query);
+$themes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+if (isset($_POST['delete'])) {
+    $themeID = $_POST['theme_id'];
+    $queryDelete = "DELETE FROM theme WHERE id = $themeID";
+    mysqli_query($conn, $queryDelete);
+
+    header('Location: themes.php');
+}
+
+?>
 
 <section class="p-8 bg-[#1F4E3A] min-h-screen">
-    <a href="formNote.php" class="flex-1 bg-green-500 text-white py-1 rounded-lg  p-2 ">
-        Add new thémes 
+    <a href="formThemes.php" class="flex-1 bg-green-500 text-white py-1 rounded-lg  p-2 ">
+        Add new thémes
     </a>
     <h2 class="text-3xl font-bold mb-6 text-white mt-3">Liste des thèmes</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="p-4 bg-[#FFFBF0] bg-opacity-70 rounded shadow flex flex-col justify-between">
-            <div>
-                <h3 class="text-xl font-semibold text-black mb-2">Productivité</h3>
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-full h-2 rounded-full" style="background-color: #4DC2C3;"></span>
+        <?php foreach ($themes as $theme): ?>
+            <div class="p-4 bg-[#FFFBF0] bg-opacity-70 rounded shadow flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold text-black mb-2"><?= $theme['nom'] ?></h3>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-full h-2 rounded-full" style="background-color: <?= $theme['badgeCouleur'] ?>;"></span>
+                    </div>
+                    <p class="text-sm text-black">Notes associées : <?= $theme['total_notes'] ?></p>
                 </div>
-                <p class="text-sm text-black">Notes associées : 5</p>
-            </div>
-            <div class="flex gap-2 mt-4">
-                <button class="flex-1 bg-blue-500 text-white py-1 rounded hover:bg-blue-600">Modifier</button>
-                <button class="flex-1 bg-red-500 text-white py-1 rounded hover:bg-red-600">Supprimer</button>
-            </div>
-        </div>
-        <div class="p-4 bg-[#FFFBF0] bg-opacity-70 rounded shadow flex flex-col justify-between">
-            <div>
-                <h3 class="text-xl font-semibold text-black mb-2">Voyage</h3>
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-full h-2 rounded-full" style="background-color: #98CA43;"></span>
-
+                <div class="flex gap-2 mt-4">
+                    <form method="post" class="flex-1" action="formThemes.php">
+                        <input type="hidden" name="theme_id" value="<?= $theme['id'] ?>">
+                        <button name='edit' value='edit' class="flex-1 bg-blue-500 text-white py-1 rounded hover:bg-blue-600">Modifier</button>
+                    </form>
+                    <form method="post" class="flex-1" onsubmit="return confirm('Est ce que  t\'as sure supprimer cette theme');">
+                        <input type="hidden" name="theme_id" value="<?= $theme['id'] ?>">
+                        <button name='delete' value='delete' class="bg-red-500 text-white py-1 rounded hover:bg-red-600">Supprimer</button>
+                    </form>
                 </div>
-                <p class="text-sm text-black">Notes associées : 2</p>
             </div>
-            <div class="flex gap-2 mt-4">
-                <button class="flex-1 bg-blue-500 text-white py-1 rounded hover:bg-blue-600">Modifier</button>
-                <button class="flex-1 bg-red-500 text-white py-1 rounded hover:bg-red-600">Supprimer</button>
-            </div>
-        </div>
-        <div class="p-4 bg-[#FFFBF0] bg-opacity-70 rounded shadow flex flex-col justify-between">
-            <div>
-                <h3 class="text-xl font-semibold text-black mb-2">Créativité</h3>
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-full h-2 rounded-full" style="background-color: #FFC107;"></span>
-                </div>
-                <p class="text-sm text-black">Notes associées : 3</p>
-            </div>
-            <div class="flex gap-2 mt-4">
-                <button class="flex-1 bg-blue-500 text-white py-1 rounded hover:bg-blue-600">Modifier</button>
-                <button class="flex-1 bg-red-500 text-white py-1 rounded hover:bg-red-600">Supprimer</button>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 
 </section>
