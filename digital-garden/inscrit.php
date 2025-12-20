@@ -1,49 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "garden");
-if (!$con) {
-    die("erreur");
-}
-if (isset($_POST["Register"])) {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
-    $password_confirm = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_SPECIAL_CHARS);
-
-    $errors = [];
-    if (!$username) {
-        $errors['username'] = 'Username  required';
-    } elseif (!preg_match('/^[a-zA-Z]{3,}$/', $username)) {
-        $errors['username'] = 'Username Invalid ';
-    }
-
-    if (!$email) {
-        $errors['email'] = 'Invalide email';
-    }
-
-    if (!$password || !$password_confirm) {
-        $errors['password'] = 'Password  required';
-    } elseif (strlen($password) < 6) {
-        $errors['password'] = 'Password must be  6 characters';
-    } elseif ($password !== $password_confirm) {
-        $errors['password'] = 'Passwords not match';
-    }
-
-    if (count($errors) == 0) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users (username ,email,password)values('$username', '$email','$password')";
-
-        try {
-            $res = mysqli_query($con, $query);
-            header("Location: login.php");
-            exit;
-        } catch (\Throwable $th) {
-            echo '<script> alert("erreur disnscription")</script>';
-        }
-    } else {
-        header("Location: inscrit.php?" . http_build_query(['errors' => $errors]));
-        exit;
-    }
-}
+session_start();
 ?>
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -51,7 +7,7 @@ if (isset($_POST["Register"])) {
 <section class="bg-[#1F4E3A] min-h-screen flex items-center justify-center">
     <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md ">
         <h1 class="text-2xl font-bold mb-6 text-center text-[#1F4E3A]">Créer un compte</h1>
-        <form id="form" class="flex flex-col gap-4" action="inscrit.php" method="post">
+        <form id="form" class="flex flex-col gap-4" action="../includes/auth.php" method="post">
             <div>
                 <label for="username" class="block text-sm font-semibold mb-1">Nom d’utilisateur</label>
                 <input type="text" id="username" name="username" placeholder="User Name "
