@@ -9,19 +9,22 @@ require_once __DIR__ . '/../config/database.php';
 include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/navbar.php';
 
+$queryTheme = "SELECT * FROM theme WHERE id_user = $_SESSION[user_id]";
+$themesResult = mysqli_query($conn, $queryTheme);
+$themes = mysqli_fetch_all($themesResult, MYSQLI_ASSOC);
+
 // creer une note
 if (isset($_POST['ajoute'])) {
-    $theme = $_POST['theme'];
+    $themeID = $_POST['theme'];
     $titre = $_POST['titre'];
     $importance = $_POST['importance'];
     $contenu = $_POST['contenu'];
-    
-    print_r($_POST);
 
-    $query = "INSERT INTO theme(nom, badgeCouleur, id_user) VALUES ('$name', '$color', $userId)";
+    $date = date('Y-m-d');
+    $query = "INSERT INTO note(titre, importance,contenu,id_theme, dateCreation) VALUES ('$titre', $importance,'$contenu',$themeID, '$date')";
 
     if (mysqli_query($conn, $query)) {
-        header('Location: themes.php');
+        header('Location: notes.php');
     }
 }
 ?>
@@ -31,15 +34,15 @@ if (isset($_POST['ajoute'])) {
         <h3 class="text-2xl font-bold mb-6 text-[#173B2D] text-center">
             Ajouter
         </h3>
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-4" method="post">
             <div class="flex flex-col">
                 <label class="text-[#173B2D] mb-1 flex items-center gap-2">
                     <i class="fa-solid fa-tag"></i> Thème
                 </label>
-                <select class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]" name="theme">
-                    <option>Productivité</option>
-                    <option>Voyage</option>
-                    <option>Créativité</option>
+                <select class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]" name="theme" required>
+                    <?php foreach ($themes as $theme): ?>
+                        <option value="<?= $theme['id'] ?>"><?= $theme['nom'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="flex flex-col">
@@ -65,12 +68,12 @@ if (isset($_POST['ajoute'])) {
                 <label class="text-[#173B2D] mb-1 flex items-center gap-2">
                     <i class="fa-solid fa-align-left"></i> Contenu
                 </label>
-                <p rows="4" placeholder="Résumé ou contenu..." name="contenu"
-                    class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]" ></p>
+                <textarea rows="4" placeholder="Résumé ou contenu..." name="contenu"
+                    class="border border-[#98CA43] p-2 rounded-lg focus:ring-2 focus:ring-[#4DC2C3]"></textarea>
             </div>
             <div class="md:col-span-2">
                 <button
-                    name="ajoute" value="ajoute"
+                    type="submit" name="ajoute" value="ajoute"
                     class="w-full bg-green-900 text-white py-2 rounded-xl">
                     Enregistrer
                 </button>
