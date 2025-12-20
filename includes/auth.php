@@ -40,9 +40,10 @@ function registerUser($conn){
         $errors['password'] = 'Passwords not match';
     }
 
+    $date = date('Y-m-d');
     if (count($errors) == 0) {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users (username ,email,password)values('$username', '$email','$password')";
+        $query = "INSERT INTO users (username ,email,password,dateInscription)values('$username', '$email','$password','$date')";
 
         try {
             $res = mysqli_query($conn, $query);
@@ -66,6 +67,7 @@ function loginUser($conn){
         $user = mysqli_fetch_assoc($res);
         if (password_verify($password, $user["password"])) {
             $_SESSION["user"] = $user["username"];
+            $_SESSION["dateInscription"]=$user["dateInscription"];
             header("Location: ../digital-garden/dashboard.php");
             exit;
         }

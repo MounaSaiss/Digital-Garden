@@ -13,7 +13,7 @@ if (!isset($_SESSION["user"])) {
             <div class="mb-10 text-center lg:text-left">
                 <h1 class="text-4xl font-bold text-white"> 
                 <i class="fas fa-smile text-3xl"></i>
-                Bienvenue, <span class="text-[#98CA43]">Mouna</span>
+                Bienvenue, <span class="text-[#98CA43]"><?=$_SESSION["user"] ?></span>
                 </h1>
                 <p class="text-white/70 mt-2">
                     Voici votre espace personnel Digital Garden
@@ -22,7 +22,7 @@ if (!isset($_SESSION["user"])) {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                 <div class="bg-white rounded-3xl p-6 ">
                     <p class="text-sm text-black-500">Date d’inscription</p>
-                    <p class="text-xl font-semibold text-black">12 Décembre 2025</p>
+                    <p class="text-xl font-semibold text-black"><?= date("d F Y", strtotime($_SESSION["dateInscription"])) ?></p>
                 </div>
                 <div class="bg-white rounded-3xl p-6 ">
                     <p class="text-sm text-black-500">Dernière connexion</p>

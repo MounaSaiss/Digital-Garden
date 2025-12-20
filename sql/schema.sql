@@ -28,4 +28,8 @@ ALTER TABLE users
 ADD email VARCHAR(50) AFTER username;
 ALTER TABLE users
 ADD confirm_password VARCHAR(255) AFTER password ;
+ALTER TABLE users
+ADD lastLogin TIME AFTER dateInscription;
+
+
 
